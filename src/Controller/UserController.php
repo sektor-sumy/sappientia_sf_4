@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Form\Type\UserRegisterForm;
 use App\Service\UserService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use App\Exception\UserAlreadyRegisteredException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,14 +13,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @Route("/")
+ * Class UserController
  */
 class UserController extends Controller
 {
     /**
      * @Route("/register", name="user-register")
      *
-     * @Template(":User:register.html.twig")
+     * @Template("User/register.html.twig")
      *
      * @param Request $request
      *
@@ -35,8 +35,8 @@ class UserController extends Controller
         }
 
         $form = $this->createForm(UserRegisterForm::class);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $request->isMethod($request::METHOD_POST)) {
-            $form->handleRequest($request);
             if ($form->isValid()) {
                 try {
                     $this->getUserService()->register($form->getData());
@@ -59,7 +59,7 @@ class UserController extends Controller
     /**
      * @Route("/login", name="user-login")
      *
-     * @Template(":User:login.html.twig")
+     * @Template("User/login.html.twig")
      *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
@@ -80,7 +80,7 @@ class UserController extends Controller
     /**
      * @Route("/register/success", name="user-register-success")
      *
-     * @Template(":User:registerSuccess.html.twig")
+     * @Template("User/registerSuccess.html.twig")
      *
      * @return array|RedirectResponse
      */

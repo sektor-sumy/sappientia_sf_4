@@ -1,4 +1,4 @@
-{% extends ':Layout:default.html.twig' %}
+{% extends 'Layout/default.html.twig' %}
 {% set title = 'Sign up'|trans %}
 {% set meta_title = title %}
 
@@ -7,7 +7,7 @@
     <h1 class="text-center">{{ 'Welcome to test'|trans }}</h1>
         <div class="row">
             <div class="col-sm-offset-3 col-sm-6 col-lg-offset-4 col-lg-4 fadeInDownSmall animated">
-                {% include ":Layout:flashbag.html.twig" %}
+                {% include "Layout/flashbag.html.twig" %}
                 <ul class="nav nav-tabs">
                     <li class="col-xs-6 text-center">
                         <a href="{{ url('user-login') }}">

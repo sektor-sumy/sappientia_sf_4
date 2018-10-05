@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <body class="layout-boxed frontend">
@@ -14,11 +14,11 @@
             </div>
         </div>
         {% block javascripts %}
-            <script src="{{ grunt_asset('js/main_vendor.js') }}"></script>
+            <script src="{{ grunt_asset('assets/js/main_vendor.js') }}"></script>
         {% endblock %}
         <div class="controls">
             {% block controls %}
-                {% include ":Layout:flashbag.html.twig" %}
+                {% include "Layout/flashbag.html.twig" %}
             {% endblock %}
         </div>
         <div class="main-footer">

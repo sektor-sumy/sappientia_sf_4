@@ -51,7 +51,7 @@ class UserService
         $encodedPassword = $encoder->encodePassword($user, $user->getPassword());
         $user->setEmail($email);
         $user->setPassword($encodedPassword);
-        $user->setEmail($email);
+        $user->setHash($user->generateHash());
         $this->em->persist($user);
         $this->em->flush();
     }

@@ -1,7 +1,7 @@
-{% extends '@App/Email/base.html.twig' %}
+{% extends 'Email/base.html.twig' %}
 
 {% block content %}
-    Hi, {{ user.name }}
+    Hi, {{ user.firstName }}
     <br />
     {{ message|raw }}
     <br />

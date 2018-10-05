@@ -1,0 +1,27 @@
+dev_css:
+  options:
+    optimization: 2
+    dumpLineNumbers: all
+  files:
+    public/assets/css/main.css: public/css/main.less
+dev_email:
+  options:
+    optimization: 2
+    dumpLineNumbers: all
+  files:
+    public/assets/css/email.css: public/css/email/main.less
+
+prod_css:
+  options:
+    compress: true
+    yuicompress: true
+    optimization: 2
+  files:
+    public/assets/css/main.css: public/css/main.less
+prod_email:
+  options:
+    compress: true
+    yuicompress: true
+    optimization: 2
+  files:
+    public/assets/css/email.css: public/css/email/main.less
