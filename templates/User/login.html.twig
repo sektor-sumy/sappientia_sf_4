@@ -1,0 +1,13 @@
+{% extends ':Layout:default.html.twig' %}
+{% set title = 'Sign in'|trans %}
+{% set meta_title = title %}
+{% block content %}
+    <div class="container login">
+        <div class="row">
+            <h1 class="text-center">{{ 'Welcome to test'|trans }}</h1>
+            <div class="col-sm-offset-3 col-sm-6 col-lg-offset-4 col-lg-4 fadeInDownSmall animated">
+                {% include ':User:loginForm.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        Symfony\Component\Security\Core\User\UserInterface:
+            algorithm:           sha512
+            encode_as_base64:    true
+            iterations:          5000
+
+    role_hierarchy:
+        ROLE_ROOT: [ROLE_USER, ROLE_ADMIN, ROLE_ROOT]
+        ROLE_ADMIN: [ROLE_USER, ROLE_ADMIN]
+        ROLE_USER: [ROLE_USER, IS_AUTHENTICATED_ANONYMOUSLY]
+
+    providers:
+        users:
+            id: user.provider
+
+    firewalls:
+        dev:
+           pattern: ^/(_(profiler|wdt)|css|images|js)/
+           security: false
+        main:
+            anonymous: true
+            pattern:  ^/
+            provider: users
+            form_login:
+                check_path: user-login-check
+                login_path: user-login
+                default_target_path: homepage
+            logout:
+                path:   user-logout
+                target: user-login
+            remember_me:
+                secret:   '%kernel.secret%'
+                name:     FREMEMBERME
+                lifetime: 31536000
+                path:     /
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/, role: IS_AUTHENTICATED_FULLY }

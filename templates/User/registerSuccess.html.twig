@@ -1,0 +1,13 @@
+{% extends ':Layout:default.html.twig' %}
+{% set title = 'Registration is successful!'|trans %}
+{% set meta_title = title %}
+{% block content %}
+    <div class="container login">
+        <h1 class="text-success text-center">
+            {{ 'You have successfully registered!'|trans }}
+        </h1>
+        <div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4 fadeInDownSmall animated">
+            {% include ':User:loginForm.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

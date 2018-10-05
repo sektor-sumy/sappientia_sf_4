@@ -1,0 +1,41 @@
+{% include ':Layout:flashbag.html.twig' %}
+<ul class="nav nav-tabs">
+    <li class="active col-xs-6 text-center">
+        <a href="{{ url('user-login') }}">
+            {{ 'Sign in'|trans }}
+        </a>
+    </li>
+    <li class="col-xs-6 text-center">
+        <a href="{{ url('user-register') }}" >
+            {{ 'Create account'|trans }}
+        </a>
+    </li>
+</ul>
+<div class="col-md-12 form-block">
+    <form action="{{ path('user-login-check') }}" method="post">
+        <div class="form-group col-xs-12">
+            <label for="email" class="fa fa-envelope-o" rel="tooltip" title="email"></label>
+            <input type="email" class="form-control" id="email"  placeholder="Email" name="_username" value="{{ last_username }}">
+        </div>
+        <div class="form-group col-xs-12">
+            <label class="fa fa-lock" for="password" rel="tooltip" title="password"></label>
+            <input type="password" class="form-control" id="password" placeholder="Password" name="_password">
+        </div>
+        <div class="form-group col-xs-6">
+            <label for="remember_me">
+                <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                <small>{{ 'Remember me'|trans }}</small>
+            </label>
+        </div>
+        <div class="col-xs-12">
+            {% if error is not empty %}
+                <div class="alert alert-danger">
+                    {{ error.message }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="form-group col-xs-6" style="clear: both">
+            <button type="submit" class="btn btn-warning btn-block btn-sm">{{ 'Sign in'|trans }}</button>
+        </div>
+    </form>
+</div>
